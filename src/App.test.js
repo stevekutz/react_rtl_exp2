@@ -9,11 +9,28 @@ afterEach(rtl.cleanup);
 
 
 // Started with testing render
-describe('it render App to allow testing components', () => {
+describe('it renders App to allow testing components', () => {
   it('it mounts a simulated DOM', () => {
-    const simulatedDOM = rtl.render(<App/>)
+    const simulatedDOM = rtl.render(<App/>);
+    const container = document.body;
+
+    console.log('simulatedDOM is ', simulatedDOM);
+    console.log('container is ', container);  
+    //console.log('simulatedDOM with debug is ', simulatedDOM.debug());
+
   })
 
+  it('verifies Kitt text exists', () => {
+    const wrapper = rtl.render(<App/>);
+    const hasKittensText = wrapper.queryByText(/Kitt/i);
+    expect(hasKittensText).toBeInTheDocument();
+  })
+
+  it('verifies entire Kittens is in the Document', () => {
+    const testDOM = rtl.render(<App/>);
+    const hasEntireKittenString = testDOM.queryByText('All about Kittens');
+    expect(hasEntireKittenString).toBeInTheDocument();
+  })
 
 })
 
