@@ -21,20 +21,26 @@ describe('it renders App to allow testing components', () => {
     //console.log('simulatedDOM with debug is ', simulatedDOM.debug());
 
   })
+
+  it('verfies Lorem text exists using getByText', () => {
+    const testDOM = rtl.render(<App/>);
+    const latinLorem = testDOM.getByText(/orem/i)
+    expect(latinLorem).toBeInTheDocument();
+  })
+/*
   // THIS DOES NOT WORK to find when element NOT part of DOM
   it('verfies Lorem text exists using getByText', () => {
     const testDOM = rtl.render(<App/>);
     const latinLorem = testDOM.getByText(/nope/i)   // ( / orem/i) also fails !!!
     expect(latinLorem).not.toBeInTheDocument();
   })
-
+*/
   // THIS WORKS to find when an element is NOT part of DOM
   it('verfies Lorem text exists using getByText', () => {
     const testDOM = rtl.render(<App/>);
     const latinLorem = testDOM.queryByText(/nope/i)
     expect(latinLorem).not.toBeInTheDocument();
   })
-
 
   it('verifies Kitt text exists', () => {
     const wrapper = rtl.render(<App/>);
