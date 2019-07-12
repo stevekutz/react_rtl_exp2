@@ -6,6 +6,7 @@ import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
 
 afterEach(rtl.cleanup);
+import { getByLabelText} from '@testing-library/react';
 
 
 // Started with testing render
@@ -14,11 +15,26 @@ describe('it renders App to allow testing components', () => {
     const simulatedDOM = rtl.render(<App/>);
     const container = document.body;
 
-    console.log('simulatedDOM is ', simulatedDOM);
-    console.log('container is ', container);  
+  //  console.log('simulatedDOM is ', simulatedDOM);
+  //  console.log('container is ', container);  
+  //   console.log('getLabelByText is', getByLabelText);
     //console.log('simulatedDOM with debug is ', simulatedDOM.debug());
 
   })
+  // THIS DOES NOT WORK to find when element NOT part of DOM
+  it('verfies Lorem text exists using getByText', () => {
+    const testDOM = rtl.render(<App/>);
+    const latinLorem = testDOM.getByText(/nope/i)   // ( / orem/i) also fails !!!
+    expect(latinLorem).not.toBeInTheDocument();
+  })
+
+  // THIS WORKS to find when an element is NOT part of DOM
+  it('verfies Lorem text exists using getByText', () => {
+    const testDOM = rtl.render(<App/>);
+    const latinLorem = testDOM.queryByText(/nope/i)
+    expect(latinLorem).not.toBeInTheDocument();
+  })
+
 
   it('verifies Kitt text exists', () => {
     const wrapper = rtl.render(<App/>);
@@ -26,10 +42,18 @@ describe('it renders App to allow testing components', () => {
     expect(hasKittensText).toBeInTheDocument();
   })
 
-  it('verifies entire Kittens is in the Document', () => {
+  it('verifies entire Kitten string is in the Document', () => {
     const testDOM = rtl.render(<App/>);
-    const hasEntireKittenString = testDOM.queryByText('All about Kittens');
+    const testString = 'All about Kittens';
+    const hasEntireKittenString = testDOM.queryByText(testString);
     expect(hasEntireKittenString).toBeInTheDocument();
+  //  console.log(' will be null when fails', hasEntireKittenString);
+  })
+
+  it('verfies Lorem text exists using getByText', () => {
+    const testDOM = rtl.render(<App/>);
+    const latinLorem = testDOM.getByText(/orem/i)
+    expect(latinLorem).toBeInTheDocument();
   })
 
 })
