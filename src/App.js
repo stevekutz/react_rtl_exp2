@@ -6,7 +6,7 @@ class App extends React.Component {
     return (
       <section aria-labelledby = "KittensHeader">
         <label htmlFor="username">Username</label>
-        <input id="username" />
+        <input id="username" alt="userInfo"/>
         <h2 id = "KitttensHeader">All about Kittens</h2>
         <p className = "content"> Lorem ipsum dolor sit amet</p>
       </section>
