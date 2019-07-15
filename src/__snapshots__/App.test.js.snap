@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should demonstrate snapshot with renderer passing 1`] = `
+<div
+  prop="top div test prop"
+>
+  <section
+    aria-labelledby="KittensHeader"
+  >
+    <label
+      htmlFor="username"
+    >
+      Username
+    </label>
+    <input
+      alt="userInfo"
+      id="username"
+    />
+    <h2
+      id="KitttensHeader"
+    >
+      All about Kittens
+    </h2>
+    <p
+      className="content"
+    >
+       React elements use htmlFor
+    </p>
+  </section>
+  <div
+    prop="childu div "
+  >
+    <form
+      action=""
+      className="formExp"
+      method="get"
+    >
+      <div
+        className="formName"
+      >
+        <label
+          htmlFor="fullName"
+        >
+          Enter your name: 
+        </label>
+        <input
+          id="fullName"
+          name="fullName"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="formEmail"
+      >
+        <label
+          htmlFor="email"
+        >
+          Enter your email: 
+        </label>
+        <input
+          id="email"
+          name="email"
+          required={true}
+          type="email"
+        />
+      </div>
+      <div
+        className="formInput"
+      >
+        <input
+          type="submit"
+          value="Login"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+`;
