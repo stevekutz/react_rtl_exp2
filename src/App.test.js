@@ -116,7 +116,14 @@ it('12) expects label fullName to exist in form uing getByLabelText', () => {
 
 })
 
-it('should demonstrate snapshot with renderer passing', () => {
+it('13 it expects to find email text', () => {
+  const testDOM = TL.render(<App/>);
+  expect(testDOM.getByText(/email/));
+
+})
+
+
+it('14 should demonstrate snapshot of <App /> with renderer passing', () => {
   const tree = renderer.create(<App/>).toJSON();
   console.log('tree is JSON ized as ', tree);
   console.log('tree.props.prop is ', tree.props.prop);
@@ -124,6 +131,23 @@ it('should demonstrate snapshot with renderer passing', () => {
 
   expect(tree).toMatchSnapshot();
 
+})
+
+it(`14a) it should snapshot the form`, () => {
+  const formTree = renderer.create(<form/>).toJSON();
+  console.log('formTree is ', formTree);
+
+  expect(formTree).toMatchSnapshot();
+})
+
+it(`should mock an empty function`, () => {
+  const mockFunc = jest.fn();
+  console.log('mockFunc is ', mockFunc);
+  expect(mockFunc()).toBeUndefined();
+  expect(mockFunc).toHaveBeenCalled();
+  expect(mockFunc).toHaveBeenCalledTimes(1);
+  //expect(mockFunc).toHaveBeenCalledTimes(2); // FAILS 
+  expect(mockFunc).not.toHaveBeenCalledTimes(2);
 
 })
 
