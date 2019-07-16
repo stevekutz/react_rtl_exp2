@@ -1,7 +1,16 @@
 import React from 'react';
-
+import Speaker from './Speaker';
 
 class App extends React.Component {
+  state = {
+    message: 'nothing to say yet',
+  }
+  speak = () => {
+    this.setState({
+      message: "speak has been called !!!"
+    })
+  }
+  
   render() {
     return (
       <div prop = "top div test prop" > 
@@ -12,26 +21,26 @@ class App extends React.Component {
             <p className = "content"> React elements use htmlFor</p>
           </section>
 
-          <div prop = "childu div ">
+          <Speaker  message = {this.state.message} speak = {this.speak} />
+
+
+          <div prop = "child div ">
             
-          <form action="" method="get" className="formExp">
-              <div className="formName">
-                <label htmlFor="fullName">Enter your name: </label>
-                <input type="text" name="fullName" id="fullName" required/>
-              </div>
+            <form action="" method="get" className="formExp">
+                <div className="formName">
+                  <label htmlFor="fullName">Enter your name: </label>
+                  <input type="text" name="fullName" id="fullName" required/>
+                </div>
 
-              <div className="formEmail">
-                <label htmlFor="email">Enter your email: </label>
-                <input type="email" name="email" id="email" required/>
-              </div>
+                <div className="formEmail">
+                  <label htmlFor="email">Enter your email: </label>
+                  <input type="email" name="email" id="email" required/>
+                </div>
 
-              <div className="formInput">
-                <input type="submit" value="Login"/>
-              </div>
-        </form>
-          
-          
-          
+                <div className="formInput">
+                  <input type="submit" value="Login"/>
+                </div>
+            </form>
           
           </div>
 
